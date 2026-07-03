@@ -1,0 +1,10 @@
+# Credentials — KHÔNG bao giờ commit
+.env
+
+# SSH private key — KHÔNG bao giờ commit
+hostinger_key
+
+# Python cache (nếu dùng deploy.py)
+__pycache__/
+*.pyc
+*.pyo

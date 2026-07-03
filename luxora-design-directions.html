@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luxora — Chọn Hướng Thiết Kế</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lexend:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  body {
+    background: #0C0F14;
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── PAGE HEADER ── */
+  .page-header {
+    padding: 3rem 4rem 2rem;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+  .page-header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: #fff;
+  }
+  .page-header h1 span {
+    color: #C9A84C;
+  }
+  .page-header p {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-top: 0.35rem;
+  }
+  .skill-badges {
+    display: flex;
+    gap: 0.5rem;
+  }
+  .badge {
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.75rem;
+    border-radius: 2rem;
+    border: 1px solid rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.4);
+  }
+  .badge.active { border-color: #C9A84C55; color: #C9A84C; }
+
+  /* ── GRID ── */
+  .directions-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: rgba(255,255,255,0.05);
+    margin: 0;
+  }
+
+  /* ── DIRECTION CARD ── */
+  .dir-card {
+    background: #0C0F14;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.4s var(--ease-out);
+  }
+  .dir-card:hover { z-index: 2; }
+
+  .card-inner {
+    padding: 3rem;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 2rem;
+    height: 100%;
+    min-height: 520px;
+  }
+
+  /* card top */
+  .card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+  .dir-number {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.2);
+    text-transform: uppercase;
+    padding-top: 0.25rem;
+  }
+  .dir-title {
+    font-size: 1.65rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .dir-tagline {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.4);
+    margin-top: 0.4rem;
+    letter-spacing: 0.04em;
+  }
+  .style-tag {
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.6rem;
+    border-radius: 3px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* color swatches */
+  .swatches { display: flex; gap: 6px; align-items: center; }
+  .swatch {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .swatch-label {
+    font-size: 0.6rem;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 0.06em;
+    margin-left: 0.5rem;
+  }
+
+  /* font preview */
+  .font-row { display: flex; flex-direction: column; gap: 0.5rem; }
+  .font-display-name {
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.2);
+  }
+  .font-specimen-heading {
+    font-size: 2rem;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+  .font-specimen-body {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.5);
+  }
+
+  /* mini mockup */
+  .mini-mockup {
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    height: 200px;
+    margin-top: 0.5rem;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  /* card tags row */
+  .tags-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.75rem; }
+  .tag {
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+    border: 1px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.3);
+  }
+
+  /* ── DIRECTION 1: SOVEREIGN ── */
+  .dir-1 { }
+  .dir-1 .dir-title { font-family: 'DM Serif Display', serif; color: #E8E0D0; font-weight: 400; }
+  .dir-1 .style-tag { background: rgba(201,168,76,0.12); color: #C9A84C; border: 1px solid rgba(201,168,76,0.3); }
+
+  /* D1 Mockup */
+  .mockup-1 {
+    background: #05080D;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .m1-nav {
+    padding: 0.6rem 1rem;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+  }
+  .m1-logo { font-family: 'DM Serif Display', serif; font-size: 0.75rem; color: #C9A84C; letter-spacing: 0.15em; }
+  .m1-nav-links { display: flex; gap: 0.75rem; }
+  .m1-nav-link { font-family: 'DM Sans', sans-serif; font-size: 0.45rem; color: rgba(255,255,255,0.3); letter-spacing: 0.08em; }
+  .m1-hero {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 1.25rem 1rem;
+    position: relative;
+    gap: 0.5rem;
+  }
+  .m1-line { width: 1px; background: rgba(201,168,76,0.3); align-self: stretch; margin-right: 0.5rem; flex-shrink: 0; }
+  .m1-headline { font-family: 'DM Serif Display', serif; font-size: 1.3rem; color: #E8E0D0; line-height: 1.1; letter-spacing: -0.02em; }
+  .m1-sub { font-family: 'DM Sans', sans-serif; font-size: 0.45rem; color: rgba(255,255,255,0.35); letter-spacing: 0.06em; margin-top: 0.4rem; line-height: 1.5; }
+  .m1-cta {
+    margin-top: 0.6rem;
+    display: inline-block;
+    background: #C9A84C;
+    color: #05080D;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.4rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.7rem;
+    font-weight: 600;
+  }
+  .m1-stat {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: right;
+  }
+  .m1-stat-num { font-family: 'DM Serif Display', serif; font-size: 1.8rem; color: rgba(201,168,76,0.15); line-height: 1; }
+  .m1-stat-label { font-family: 'DM Sans', sans-serif; font-size: 0.4rem; color: rgba(255,255,255,0.15); letter-spacing: 0.1em; text-transform: uppercase; }
+
+  /* ── DIRECTION 2: CLARITY ── */
+  .dir-2 .dir-title { font-family: 'Fraunces', serif; font-style: italic; color: #E5EDF8; font-weight: 300; }
+  .dir-2 .style-tag { background: rgba(37,99,235,0.12); color: #60A5FA; border: 1px solid rgba(37,99,235,0.3); }
+
+  .mockup-2 {
+    background: #F4F7FB;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .m2-nav {
+    padding: 0.6rem 1rem;
+    background: #fff;
+    border-bottom: 1px solid #E2E8F0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+  }
+  .m2-logo { font-family: 'Fraunces', serif; font-size: 0.75rem; color: #1A2B4A; font-style: italic; }
+  .m2-nav-items { display: flex; gap: 0.5rem; align-items: center; }
+  .m2-lang { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.38rem; color: #64748B; border: 1px solid #E2E8F0; padding: 0.15rem 0.35rem; border-radius: 3px; }
+  .m2-btn-s { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.38rem; background: #1A2B4A; color: #fff; padding: 0.2rem 0.45rem; border-radius: 3px; }
+  .m2-hero {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    gap: 1rem;
+  }
+  .m2-hero-text { flex: 1; }
+  .m2-overline { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.38rem; color: #2563EB; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; margin-bottom: 0.35rem; }
+  .m2-h { font-family: 'Fraunces', serif; font-size: 1.1rem; color: #1A2B4A; line-height: 1.15; font-style: italic; }
+  .m2-p { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.42rem; color: #475569; line-height: 1.5; margin-top: 0.35rem; }
+  .m2-cta { margin-top: 0.6rem; background: #2563EB; color: #fff; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.38rem; padding: 0.28rem 0.6rem; border-radius: 5px; display: inline-block; font-weight: 600; }
+  .m2-card {
+    width: 90px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(26,43,74,0.08);
+    padding: 0.6rem;
+    flex-shrink: 0;
+  }
+  .m2-card-label { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.35rem; color: #94A3B8; margin-bottom: 0.2rem; }
+  .m2-card-value { font-family: 'Fraunces', serif; font-size: 0.9rem; color: #1A2B4A; font-weight: 600; }
+  .m2-card-change { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.35rem; color: #10B981; margin-top: 0.1rem; font-weight: 600; }
+  .m2-card-bar { height: 3px; background: #E2E8F0; border-radius: 2px; margin-top: 0.35rem; overflow: hidden; }
+  .m2-card-bar-fill { height: 100%; background: linear-gradient(90deg, #2563EB, #10B981); border-radius: 2px; width: 72%; }
+
+  /* ── DIRECTION 3: PRISMATIC ── */
+  .dir-3 .dir-title { font-family: 'Outfit', sans-serif; color: #C7D2FE; font-weight: 700; letter-spacing: -0.03em; }
+  .dir-3 .style-tag { background: rgba(99,102,241,0.12); color: #A5B4FC; border: 1px solid rgba(99,102,241,0.3); }
+
+  .mockup-3 {
+    background: #060B18;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+  .m3-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(40px);
+    pointer-events: none;
+  }
+  .m3-orb-1 { width: 120px; height: 120px; background: rgba(99,102,241,0.25); top: -30px; right: 20px; }
+  .m3-orb-2 { width: 80px; height: 80px; background: rgba(16,185,129,0.15); bottom: 20px; left: 30px; }
+  .m3-nav {
+    padding: 0.55rem 0.9rem;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+    flex-shrink: 0;
+  }
+  .m3-logo { font-family: 'Outfit', sans-serif; font-size: 0.7rem; font-weight: 700; background: linear-gradient(135deg, #A5B4FC, #34D399); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.01em; }
+  .m3-nav-r { display: flex; gap: 0.4rem; }
+  .m3-pill { font-family: 'Manrope', sans-serif; font-size: 0.35rem; padding: 0.15rem 0.4rem; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.4); }
+  .m3-pill-a { background: rgba(99,102,241,0.25); color: #A5B4FC; border-color: rgba(99,102,241,0.4); }
+  .m3-bento {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 6px;
+    padding: 0.6rem;
+    position: relative;
+    z-index: 2;
+  }
+  .m3-tile {
+    border-radius: 8px;
+    padding: 0.6rem;
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.04);
+    position: relative;
+    overflow: hidden;
+  }
+  .m3-tile:first-child { grid-column: span 2; }
+  .m3-tile-label { font-family: 'Manrope', sans-serif; font-size: 0.35rem; color: rgba(255,255,255,0.3); letter-spacing: 0.08em; text-transform: uppercase; }
+  .m3-tile-val { font-family: 'Outfit', sans-serif; font-size: 1.2rem; font-weight: 700; background: linear-gradient(135deg, #C7D2FE, #A5B4FC); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; margin-top: 0.2rem; }
+  .m3-tile-sub { font-family: 'Manrope', sans-serif; font-size: 0.38rem; color: rgba(255,255,255,0.25); margin-top: 0.1rem; }
+  .m3-tile-change { font-family: 'Manrope', sans-serif; font-size: 0.35rem; color: #34D399; font-weight: 600; margin-top: 0.2rem; }
+  .m3-tile-s-val { font-family: 'Outfit', sans-serif; font-size: 0.8rem; font-weight: 600; color: #C7D2FE; line-height: 1; margin-top: 0.2rem; }
+  .m3-cta-strip {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 0.4rem 0.6rem;
+    background: linear-gradient(135deg, rgba(99,102,241,0.9), rgba(79,46,229,0.9));
+    font-family: 'Outfit', sans-serif; font-size: 0.38rem; color: #fff; font-weight: 600;
+    text-align: center; letter-spacing: 0.06em;
+  }
+
+  /* ── DIRECTION 4: STERLING ── */
+  .dir-4 .dir-title { font-family: 'Playfair Display', serif; color: #F0EADC; font-weight: 400; letter-spacing: -0.01em; }
+  .dir-4 .style-tag { background: rgba(180,136,9,0.1); color: #D4AF37; border: 1px solid rgba(180,136,9,0.3); }
+
+  .mockup-4 {
+    background: #FDFCFA;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .m4-nav {
+    padding: 0.6rem 1rem;
+    border-bottom: 2px solid #0F2747;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+  }
+  .m4-logo { font-family: 'Playfair Display', serif; font-size: 0.75rem; color: #0F2747; letter-spacing: 0.1em; }
+  .m4-nav-r { display: flex; gap: 0.5rem; align-items: center; }
+  .m4-lang { font-family: 'Lexend', sans-serif; font-size: 0.35rem; color: #64748B; }
+  .m4-sep { width: 1px; height: 10px; background: #CBD5E1; }
+  .m4-cta-s { font-family: 'Lexend', sans-serif; font-size: 0.35rem; background: #0F2747; color: #fff; padding: 0.2rem 0.5rem; }
+  .m4-hero {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    align-items: center;
+    gap: 0;
+    padding: 1rem;
+  }
+  .m4-divider { background: #E2E8F0; align-self: stretch; }
+  .m4-hero-left { padding-right: 1rem; }
+  .m4-eyebrow { font-family: 'Lexend', sans-serif; font-size: 0.35rem; color: #D4AF37; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500; }
+  .m4-h { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: #0F2747; line-height: 1.2; margin-top: 0.3rem; }
+  .m4-p { font-family: 'Lexend', sans-serif; font-size: 0.38rem; color: #475569; line-height: 1.55; margin-top: 0.35rem; font-weight: 300; }
+  .m4-cta-row { display: flex; gap: 0.35rem; margin-top: 0.5rem; align-items: center; }
+  .m4-cta-primary { font-family: 'Lexend', sans-serif; font-size: 0.38rem; background: #0F2747; color: #fff; padding: 0.28rem 0.6rem; font-weight: 500; }
+  .m4-cta-ghost { font-family: 'Lexend', sans-serif; font-size: 0.38rem; color: #0F2747; border-bottom: 1px solid #D4AF37; padding-bottom: 0.05rem; }
+  .m4-hero-right { padding-left: 1rem; }
+  .m4-metric { margin-bottom: 0.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid #E2E8F0; }
+  .m4-metric:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .m4-metric-l { font-family: 'Lexend', sans-serif; font-size: 0.32rem; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.1em; }
+  .m4-metric-v { font-family: 'Playfair Display', serif; font-size: 0.9rem; color: #0F2747; line-height: 1; margin-top: 0.1rem; }
+  .m4-metric-c { font-family: 'Lexend', sans-serif; font-size: 0.32rem; color: #10B981; font-weight: 600; }
+
+  /* ── DETAIL PANEL (expanded) ── */
+  .detail-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(5,8,13,0.92);
+    backdrop-filter: blur(20px);
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s var(--ease-out);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .detail-overlay.open { opacity: 1; pointer-events: all; }
+  .detail-panel {
+    width: min(900px, 90vw);
+    max-height: 85vh;
+    overflow-y: auto;
+    border-radius: 12px;
+    padding: 3rem;
+    transform: translateY(20px) scale(0.97);
+    transition: transform 0.4s var(--ease-out);
+  }
+  .detail-overlay.open .detail-panel { transform: none; }
+
+  .detail-close {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+  }
+  .detail-close:hover { background: rgba(255,255,255,0.15); }
+
+  .detail-header { margin-bottom: 2rem; }
+  .detail-num { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0.5rem; }
+  .detail-title { font-size: 3rem; line-height: 1; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+  .detail-tagline { font-size: 1rem; opacity: 0.5; }
+
+  .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; }
+  .detail-section h3 { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.4; margin-bottom: 1rem; }
+
+  .palette-large { display: flex; gap: 8px; flex-wrap: wrap; }
+  .swatch-large { height: 48px; flex: 1; min-width: 60px; border-radius: 6px; position: relative; }
+  .swatch-large-hex { position: absolute; bottom: 6px; left: 6px; font-size: 0.55rem; font-weight: 600; letter-spacing: 0.04em; }
+
+  .tech-stack { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .tech-chip {
+    font-size: 0.65rem;
+    padding: 0.3rem 0.65rem;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.5);
+  }
+  .why-list { list-style: none; }
+  .why-list li {
+    padding: 0.6rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.6);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+  .why-list li::before { content: '→'; opacity: 0.3; flex-shrink: 0; }
+
+  .select-btn {
+    margin-top: 2rem;
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    border-radius: 6px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .select-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+
+  /* hover effect on cards */
+  .dir-card::after {
+    content: 'Xem chi tiết →';
+    position: absolute;
+    bottom: 1.5rem;
+    right: 2rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.2);
+    transition: color 0.3s, transform 0.3s;
+  }
+  .dir-card:hover::after { color: rgba(255,255,255,0.5); transform: translateX(4px); }
+
+  /* scrollbar */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 2px; }
+</style>
+</head>
+<body>
+
+<!-- PAGE HEADER -->
+<header class="page-header">
+  <div>
+    <h1>LUXORA <span>·</span> Hướng Thiết Kế</h1>
+    <p>FinTech Premium — 4 Hướng Khác Biệt · Chọn 1 để tiếp tục</p>
+  </div>
+  <div class="skill-badges">
+    <span class="badge active">frontend-design ✓</span>
+    <span class="badge active">ui-ux-pro-max ✓</span>
+    <span class="badge">anthropics/skills ✓</span>
+  </div>
+</header>
+
+<!-- DIRECTIONS GRID -->
+<div class="directions-grid">
+
+  <!-- ── DIR 1: SOVEREIGN ── -->
+  <div class="dir-card dir-1" onclick="openDetail(1)">
+    <div class="card-inner">
+      <div class="card-top">
+        <div>
+          <div class="dir-number">Hướng 01</div>
+          <div class="dir-title">SOVEREIGN</div>
+          <div class="dir-tagline">Quyền lực qua sự kiệm lời — Dark Trust Authority</div>
+        </div>
+        <span class="style-tag">Dark OLED + Serif</span>
+      </div>
+
+      <div>
+        <div class="swatches" style="margin-bottom:1.25rem">
+          <div class="swatch" style="background:#05080D;border:1px solid rgba(255,255,255,0.1)"></div>
+          <div class="swatch" style="background:#1A2030"></div>
+          <div class="swatch" style="background:#C9A84C"></div>
+          <div class="swatch" style="background:#E8E0D0"></div>
+          <div class="swatch" style="background:#EF4444"></div>
+          <div class="swatch-label">Void · Slate · Gold · Parchment · Alert</div>
+        </div>
+        <div class="font-row">
+          <div class="font-display-name">DM Serif Display / DM Sans 300</div>
+          <div class="font-specimen-heading" style="font-family:'DM Serif Display',serif;color:#E8E0D0;font-size:1.6rem">Wealth, Refined.</div>
+          <div class="font-specimen-body" style="font-family:'DM Sans',sans-serif;font-weight:300">Trusted by 2M+ investors across 47 markets worldwide.</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="mini-mockup">
+          <div class="mockup-1">
+            <div class="m1-nav">
+              <div class="m1-logo">LUXORA</div>
+              <div class="m1-nav-links">
+                <span class="m1-nav-link">EN · USD</span>
+                <span class="m1-nav-link">Sản phẩm</span>
+                <span class="m1-nav-link">Về chúng tôi</span>
+                <span class="m1-nav-link" style="color:#C9A84C">Đăng nhập →</span>
+              </div>
+            </div>
+            <div class="m1-hero">
+              <div class="m1-line"></div>
+              <div>
+                <div class="m1-headline">Tài sản của bạn,<br>trật tự hoàn hảo.</div>
+                <div class="m1-sub">Nền tảng quản lý tài chính cá nhân<br>chuẩn private banking.</div>
+                <div class="m1-cta">Bắt đầu miễn phí</div>
+              </div>
+              <div class="m1-stat">
+                <div class="m1-stat-num">$2.4B</div>
+                <div class="m1-stat-label">Tài sản quản lý</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tags-row">
+          <span class="tag">Dark Premium</span>
+          <span class="tag">Serif + Sans</span>
+          <span class="tag">Gold Accent</span>
+          <span class="tag">Trust Authority</span>
+          <span class="tag">OLED Optimized</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── DIR 2: CLARITY ── -->
+  <div class="dir-card dir-2" onclick="openDetail(2)">
+    <div class="card-inner">
+      <div class="card-top">
+        <div>
+          <div class="dir-number">Hướng 02</div>
+          <div class="dir-title">CLARITY</div>
+          <div class="dir-tagline">Sáng, mở, minh bạch — Trust qua ánh sáng</div>
+        </div>
+        <span class="style-tag">Light SaaS + Italic Serif</span>
+      </div>
+
+      <div>
+        <div class="swatches" style="margin-bottom:1.25rem">
+          <div class="swatch" style="background:#F4F7FB;border:1px solid rgba(255,255,255,0.08)"></div>
+          <div class="swatch" style="background:#1A2B4A"></div>
+          <div class="swatch" style="background:#2563EB"></div>
+          <div class="swatch" style="background:#10B981"></div>
+          <div class="swatch" style="background:#F59E0B"></div>
+          <div class="swatch-label">Cloud · Navy · Blue CTA · Green+ · Amber!</div>
+        </div>
+        <div class="font-row">
+          <div class="font-display-name">Fraunces Italic / Plus Jakarta Sans 400</div>
+          <div class="font-specimen-heading" style="font-family:'Fraunces',serif;font-style:italic;color:#E5EDF8;font-size:1.6rem;font-weight:300">Smart money moves.</div>
+          <div class="font-specimen-body" style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:400;color:rgba(255,255,255,0.45)">See your full financial picture, beautifully.</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="mini-mockup">
+          <div class="mockup-2">
+            <div class="m2-nav">
+              <div class="m2-logo">Luxora</div>
+              <div class="m2-nav-items">
+                <span class="m2-lang">VI · VND ▾</span>
+                <span class="m2-lang">EN · USD ▾</span>
+                <span class="m2-btn-s">Tài khoản</span>
+              </div>
+            </div>
+            <div class="m2-hero">
+              <div class="m2-hero-text">
+                <div class="m2-overline">✦ Quản lý tài chính thông minh</div>
+                <div class="m2-h">Tự tin kiểm soát<br>mọi dòng tiền.</div>
+                <div class="m2-p">Tổng hợp tài khoản, theo dõi đầu tư và<br>lập kế hoạch tài chính trong một nơi.</div>
+                <div class="m2-cta">Dùng thử miễn phí →</div>
+              </div>
+              <div class="m2-card">
+                <div class="m2-card-label">Tổng tài sản</div>
+                <div class="m2-card-value">$124,580</div>
+                <div class="m2-card-change">↑ +3.2% tháng này</div>
+                <div class="m2-card-bar"><div class="m2-card-bar-fill"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tags-row">
+          <span class="tag">Light Theme</span>
+          <span class="tag">Italic Serif Headline</span>
+          <span class="tag">Blue Trust CTA</span>
+          <span class="tag">Green = Positive</span>
+          <span class="tag">Card-based</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── DIR 3: PRISMATIC ── -->
+  <div class="dir-card dir-3" onclick="openDetail(3)">
+    <div class="card-inner">
+      <div class="card-top">
+        <div>
+          <div class="dir-number">Hướng 03</div>
+          <div class="dir-title">PRISMATIC</div>
+          <div class="dir-tagline">Tương lai của wealth management — Bento Glass</div>
+        </div>
+        <span class="style-tag">Bento Grid + Glass</span>
+      </div>
+
+      <div>
+        <div class="swatches" style="margin-bottom:1.25rem">
+          <div class="swatch" style="background:#060B18"></div>
+          <div class="swatch" style="background:#4F46E5"></div>
+          <div class="swatch" style="background:#A5B4FC"></div>
+          <div class="swatch" style="background:#34D399"></div>
+          <div class="swatch" style="background:#F43F5E"></div>
+          <div class="swatch-label">Midnight · Indigo · Lavender · Gain · Loss</div>
+        </div>
+        <div class="font-row">
+          <div class="font-display-name">Outfit 700 / Manrope 400</div>
+          <div class="font-specimen-heading" style="font-family:'Outfit',sans-serif;font-weight:700;color:#C7D2FE;font-size:1.6rem;letter-spacing:-0.03em">Next-gen finance.</div>
+          <div class="font-specimen-body" style="font-family:'Manrope',sans-serif;font-weight:400;color:rgba(255,255,255,0.4)">Your portfolio, intelligently organized in tiles.</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="mini-mockup">
+          <div class="mockup-3">
+            <div class="m3-orb m3-orb-1"></div>
+            <div class="m3-orb m3-orb-2"></div>
+            <div class="m3-nav">
+              <div class="m3-logo">LUXORA</div>
+              <div class="m3-nav-r">
+                <span class="m3-pill">VI · VND</span>
+                <span class="m3-pill m3-pill-a">Dashboard</span>
+              </div>
+            </div>
+            <div class="m3-bento">
+              <div class="m3-tile">
+                <div class="m3-tile-label">Portfolio Value</div>
+                <div class="m3-tile-val">$248,900</div>
+                <div class="m3-tile-change">↑ +$8,320 hôm nay</div>
+              </div>
+              <div class="m3-tile">
+                <div class="m3-tile-label">Bitcoin</div>
+                <div class="m3-tile-s-val">$67,240</div>
+                <div class="m3-tile-change">↑ +2.4%</div>
+              </div>
+              <div class="m3-tile">
+                <div class="m3-tile-label">Tiết kiệm</div>
+                <div class="m3-tile-s-val">8.5% p/a</div>
+                <div style="font-family:'Manrope',sans-serif;font-size:0.32rem;color:rgba(255,255,255,0.25);margin-top:0.1rem">Auto-renew ON</div>
+              </div>
+            </div>
+            <div class="m3-cta-strip">Khám phá tất cả sản phẩm →</div>
+          </div>
+        </div>
+        <div class="tags-row">
+          <span class="tag">Bento Dashboard</span>
+          <span class="tag">Glassmorphism</span>
+          <span class="tag">Gradient Brand</span>
+          <span class="tag">Dark + Glow</span>
+          <span class="tag">Data-Dense</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── DIR 4: STERLING ── -->
+  <div class="dir-card dir-4" onclick="openDetail(4)">
+    <div class="card-inner">
+      <div class="card-top">
+        <div>
+          <div class="dir-number">Hướng 04</div>
+          <div class="dir-title">STERLING</div>
+          <div class="dir-tagline">Di sản + Hiện đại — Heritage meets precision</div>
+        </div>
+        <span class="style-tag">Light Serif + Swiss</span>
+      </div>
+
+      <div>
+        <div class="swatches" style="margin-bottom:1.25rem">
+          <div class="swatch" style="background:#FDFCFA;border:1px solid rgba(255,255,255,0.08)"></div>
+          <div class="swatch" style="background:#0F2747"></div>
+          <div class="swatch" style="background:#D4AF37"></div>
+          <div class="swatch" style="background:#CBD5E1"></div>
+          <div class="swatch" style="background:#10B981"></div>
+          <div class="swatch-label">Ivory · Navy · Gold · Silver · Success</div>
+        </div>
+        <div class="font-row">
+          <div class="font-display-name">Playfair Display / Lexend 300</div>
+          <div class="font-specimen-heading" style="font-family:'Playfair Display',serif;color:#F0EADC;font-size:1.6rem;font-weight:400">A legacy of trust.</div>
+          <div class="font-specimen-body" style="font-family:'Lexend',sans-serif;font-weight:300;color:rgba(255,255,255,0.4)">Built on decades of financial expertise.</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="mini-mockup">
+          <div class="mockup-4">
+            <div class="m4-nav">
+              <div class="m4-logo">LUXORA</div>
+              <div class="m4-nav-r">
+                <span class="m4-lang">VI ▾</span>
+                <div class="m4-sep"></div>
+                <span class="m4-lang">VND ▾</span>
+                <div class="m4-sep"></div>
+                <span class="m4-cta-s">Đăng nhập</span>
+              </div>
+            </div>
+            <div class="m4-hero">
+              <div class="m4-hero-left">
+                <div class="m4-eyebrow">Nền tảng tài chính cao cấp</div>
+                <div class="m4-h">Quản lý tài sản<br>với sự chính xác.</div>
+                <div class="m4-p">Dịch vụ tài chính theo tiêu chuẩn private banking,<br>dành cho mọi nhà đầu tư.</div>
+                <div class="m4-cta-row">
+                  <span class="m4-cta-primary">Mở tài khoản</span>
+                  <span class="m4-cta-ghost">Tìm hiểu thêm</span>
+                </div>
+              </div>
+              <div class="m4-divider"></div>
+              <div class="m4-hero-right">
+                <div class="m4-metric">
+                  <div class="m4-metric-l">Tổng tài sản</div>
+                  <div class="m4-metric-v">$2.4B+</div>
+                  <div class="m4-metric-c">↑ 18.3% YTD</div>
+                </div>
+                <div class="m4-metric">
+                  <div class="m4-metric-l">Khách hàng</div>
+                  <div class="m4-metric-v">127K</div>
+                </div>
+                <div class="m4-metric">
+                  <div class="m4-metric-l">Thị trường</div>
+                  <div class="m4-metric-v">47 quốc gia</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tags-row">
+          <span class="tag">Light Premium</span>
+          <span class="tag">Serif Heritage</span>
+          <span class="tag">Navy + Gold</span>
+          <span class="tag">Swiss Grid</span>
+          <span class="tag">High Trust</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DETAIL OVERLAY -->
+<div class="detail-overlay" id="detailOverlay" onclick="closeDetail(event)">
+  <button class="detail-close" onclick="closeDetailBtn()">✕</button>
+  <div class="detail-panel" id="detailPanel"></div>
+</div>
+
+<script>
+const directions = {
+  1: {
+    num: '01',
+    title: 'SOVEREIGN',
+    tagline: 'Quyền lực qua sự kiệm lời',
+    titleFont: "'DM Serif Display', serif",
+    titleColor: '#E8E0D0',
+    bgPanel: 'linear-gradient(135deg, #0A0C12, #15192A)',
+    accentColor: '#C9A84C',
+    palette: [
+      {hex:'#05080D', label:'Void', light:true},
+      {hex:'#1A2030', label:'Slate', light:true},
+      {hex:'#C9A84C', label:'Gold', light:false},
+      {hex:'#E8E0D0', label:'Parchment', light:false},
+      {hex:'#EF4444', label:'Alert', light:true},
+    ],
+    fonts: ['DM Serif Display (Display)', 'DM Sans 300 (Body, UI)'],
+    stack: ['Next.js', 'Tailwind CSS', 'Framer Motion', 'shadcn/ui'],
+    why: [
+      'Dark nền giảm cognitive load — người dùng focus vào con số',
+      'DM Serif Display tạo cảm giác uy quyền, không phải corporate',
+      'Gold accent chỉ dùng cho CTA và số liệu quan trọng — rất tiết kiệm',
+      'Phù hợp với app native dark mode, OLED tối ưu pin',
+      'Phân biệt Luxora hoàn toàn với Techcombank, MBBank (đều light)',
+    ],
+    btnColor: '#C9A84C',
+    btnText: 'Chọn SOVEREIGN',
+  },
+  2: {
+    num: '02',
+    title: 'CLARITY',
+    tagline: 'Sáng, mở, đáng tin',
+    titleFont: "'Fraunces', serif",
+    titleStyle: 'italic',
+    titleColor: '#1A2B4A',
+    bgPanel: 'linear-gradient(135deg, #E8F0FB, #F4F7FB)',
+    accentColor: '#2563EB',
+    palette: [
+      {hex:'#F4F7FB', label:'Cloud', light:false},
+      {hex:'#1A2B4A', label:'Navy', light:true},
+      {hex:'#2563EB', label:'Blue CTA', light:true},
+      {hex:'#10B981', label:'Gain +', light:true},
+      {hex:'#F59E0B', label:'Warning', light:false},
+    ],
+    fonts: ['Fraunces Italic (Display headline)', 'Plus Jakarta Sans 400 (Body, UI, CTA)'],
+    stack: ['Next.js', 'Tailwind CSS', 'shadcn/ui', 'Recharts'],
+    why: [
+      'Light theme tạo cảm giác minh bạch — phù hợp banking/FinTech',
+      'Fraunces italic mang tính cách, khác hoàn toàn với Roboto/Inter mặc định',
+      'Navy + blue tạo trust tức thì theo psychology màu sắc tài chính',
+      'Green #10B981 cho số dương, Red cho âm — người dùng scan nhanh',
+      'Hiệu suất cao, accessibility WCAG AA tự nhiên trên nền sáng',
+    ],
+    btnColor: '#2563EB',
+    btnText: 'Chọn CLARITY',
+  },
+  3: {
+    num: '03',
+    title: 'PRISMATIC',
+    tagline: 'Tương lai của wealth management',
+    titleFont: "'Outfit', sans-serif",
+    titleColor: '#C7D2FE',
+    bgPanel: 'linear-gradient(135deg, #0B1023, #0D1530)',
+    accentColor: '#6366F1',
+    palette: [
+      {hex:'#060B18', label:'Midnight', light:true},
+      {hex:'#4F46E5', label:'Indigo Brand', light:true},
+      {hex:'#A5B4FC', label:'Lavender', light:true},
+      {hex:'#34D399', label:'Gain +', light:false},
+      {hex:'#F43F5E', label:'Loss –', light:true},
+    ],
+    fonts: ['Outfit 700 (Display, Numbers)', 'Manrope 400/500 (Body, Labels, UI)'],
+    stack: ['Next.js', 'Tailwind CSS', 'Framer Motion', 'Recharts', 'shadcn/ui'],
+    why: [
+      'Bento grid tối ưu cho dashboard — user thấy nhiều data trong 1 view',
+      'Glassmorphism tạo cảm giác premium, công nghệ cao không vulgar',
+      'Indigo/gradient phân biệt với FinTech navy truyền thống',
+      'Outfit numerals cực đẹp khi hiển thị số tiền lớn',
+      'Phù hợp nếu Luxora target Gen Y/Z và crypto-savvy investors',
+    ],
+    btnColor: '#4F46E5',
+    btnText: 'Chọn PRISMATIC',
+  },
+  4: {
+    num: '04',
+    title: 'STERLING',
+    tagline: 'Di sản & hiện đại — Heritage meets precision',
+    titleFont: "'Playfair Display', serif",
+    titleColor: '#0F2747',
+    bgPanel: 'linear-gradient(135deg, #E8EEF7, #F8FAFC)',
+    accentColor: '#D4AF37',
+    palette: [
+      {hex:'#FDFCFA', label:'Ivory', light:false},
+      {hex:'#0F2747', label:'Deep Navy', light:true},
+      {hex:'#D4AF37', label:'Sterling Gold', light:false},
+      {hex:'#CBD5E1', label:'Silver', light:false},
+      {hex:'#10B981', label:'Success', light:false},
+    ],
+    fonts: ['Playfair Display 400 (Headlines)', 'Lexend 300/500 (Body, UI — designed for readability)'],
+    stack: ['Next.js', 'Tailwind CSS', 'shadcn/ui', 'Recharts'],
+    why: [
+      'Ivory + navy gợi private banking, wealth management truyền thống',
+      'Playfair Display tạo di sản mà không cổ lỗ — đẳng cấp thực sự',
+      'Lexend được thiết kế đặc biệt để giảm visual stress khi đọc số',
+      'Swiss grid structure tạo cảm giác chính xác, đáng tin cậy',
+      'Phù hợp nếu Luxora target HNI (High Net-worth Individuals) 35-60 tuổi',
+    ],
+    btnColor: '#0F2747',
+    btnText: 'Chọn STERLING',
+  }
+};
+
+function openDetail(n) {
+  const d = directions[n];
+  const panel = document.getElementById('detailPanel');
+  const isLight = n === 2 || n === 4;
+  const textColor = isLight ? '#0F172A' : '#fff';
+  const subColor = isLight ? '#475569' : 'rgba(255,255,255,0.55)';
+
+  panel.style.background = d.bgPanel;
+  panel.style.color = textColor;
+
+  panel.innerHTML = `
+    <div class="detail-header">
+      <div class="detail-num" style="color:${d.accentColor}">${d.num}</div>
+      <div class="detail-title" style="font-family:${d.titleFont};${d.titleStyle?'font-style:italic;':''}color:${textColor};font-weight:${n===1?'400':n===4?'400':'700'}">${d.title}</div>
+      <div class="detail-tagline" style="color:${subColor}">${d.tagline}</div>
+    </div>
+
+    <div style="margin-bottom:2rem">
+      <h3 style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:${subColor};margin-bottom:1rem">Bảng màu</h3>
+      <div class="palette-large">
+        ${d.palette.map(p=>`
+          <div class="swatch-large" style="background:${p.hex};border:${p.label==='Cloud'||p.label==='Ivory'?'1px solid #E2E8F0':'none'}">
+            <span class="swatch-large-hex" style="color:${p.light?'rgba(255,255,255,0.7)':'rgba(0,0,0,0.55)'}">${p.hex}<br>${p.label}</span>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+
+    <div class="detail-grid">
+      <div class="detail-section">
+        <h3 style="color:${subColor}">Typography</h3>
+        ${d.fonts.map(f=>`<div style="font-size:0.8rem;color:${subColor};padding:0.4rem 0;border-bottom:1px solid rgba(128,128,128,0.12)">· ${f}</div>`).join('')}
+      </div>
+      <div class="detail-section">
+        <h3 style="color:${subColor}">Tech Stack đề xuất</h3>
+        <div class="tech-stack">
+          ${d.stack.map(t=>`<span class="tech-chip" style="border-color:rgba(128,128,128,0.2);color:${subColor}">${t}</span>`).join('')}
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:2rem">
+      <h3 style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:${subColor};margin-bottom:0.75rem">Tại sao hướng này phù hợp Luxora FinTech?</h3>
+      <ul class="why-list">
+        ${d.why.map(w=>`<li style="color:${subColor};border-color:rgba(128,128,128,0.1)"><span style="opacity:0.4">→</span>${w}</li>`).join('')}
+      </ul>
+    </div>
+
+    <button class="select-btn" style="background:${d.btnColor};color:${n===4?'#fff':'#fff'}"
+      onclick="selectDirection(${n})">
+      ${d.btnText}
+    </button>
+  `;
+
+  document.getElementById('detailOverlay').classList.add('open');
+}
+
+function closeDetail(e) {
+  if (e.target === document.getElementById('detailOverlay')) closeDetailBtn();
+}
+function closeDetailBtn() {
+  document.getElementById('detailOverlay').classList.remove('open');
+}
+function selectDirection(n) {
+  const names = {1:'SOVEREIGN',2:'CLARITY',3:'PRISMATIC',4:'STERLING'};
+  alert(`✓ Bạn đã chọn hướng ${n}: ${names[n]}\nTiếp theo: build hero section với style này!`);
+  closeDetailBtn();
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeDetailBtn();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<!--
+  LUXORA — Home Page
+  WordPress: front-page.php
+-->
+<html lang="en" data-lang="en" data-currency="usd">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luxora — Finance Tools for SMEs | Try Before You Buy</title>
+<meta name="description" content="Interactive dashboards and smart spreadsheets for small businesses. Try any product live — no signup. Buy what works. Instant access.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,600&family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231A2B4A'/><text y='22' x='4' font-size='18' fill='white' font-family='serif'>L</text></svg>">
+</head>
+<body>
+
+<!-- ======================================================
+     HEADER — WordPress: header.php
+     ====================================================== -->
+<header class="site-header" id="site-header">
+  <div class="container">
+    <nav class="nav-inner" aria-label="Main navigation">
+      <a href="home.html" class="nav-logo" aria-label="Luxora home">
+        <span class="nav-logo-text">LUXORA</span>
+      </a>
+      <ul class="nav-links" role="list">
+        <li><a href="catalog.html"          class="nav-link" data-i18n="nav_products">Products</a></li>
+        <li><a href="freetool.html"          class="nav-link" data-i18n="nav_tool">Free Tool</a></li>
+        <li><a href="home.html#how-it-works" class="nav-link" data-i18n="nav_hiw">How It Works</a></li>
+        <li><a href="contact.html"           class="nav-link" data-i18n="nav_support">Contact</a></li>
+      </ul>
+      <div class="nav-controls">
+        <span class="rate-pill" id="rate-pill" style="display:none;" aria-live="polite">1 USD ≈ 25,500 VND · Live</span>
+        <div class="toggle-group lang-toggle" role="group" aria-label="Language">
+          <button class="toggle-btn toggle-lang active" data-value="en" onclick="setLang('en')">EN</button>
+          <button class="toggle-btn toggle-lang"        data-value="vi" onclick="setLang('vi')">VI</button>
+        </div>
+        <div class="toggle-group" role="group" aria-label="Currency">
+          <button class="toggle-btn toggle-cur active" data-value="usd" onclick="setCurrency('usd')">USD</button>
+          <button class="toggle-btn toggle-cur"        data-value="vnd" onclick="setCurrency('vnd')">VND</button>
+        </div>
+        <a href="#" class="icon-btn" aria-label="Cart">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        </a>
+        <a href="account.html" class="icon-btn" aria-label="My account">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </a>
+        <a href="catalog.html" class="btn btn-primary btn-sm" data-i18n="nav_cta">See All Products</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- ======================================================
+     HERO
+     ====================================================== -->
+<section class="hero" aria-label="Hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <div class="hero-eyebrow-row">
+          <span class="eyebrow" data-i18n="hero_eyebrow">Finance tools for SMEs · Try live · No signup required</span>
+          <span class="live-pill"><span class="live-dot"></span><span data-i18n="hero_live">Live demo</span></span>
+        </div>
+        <h1 class="display-xl hero-h1" data-i18n="hero_h1">The Finance Tools <em>Your Business</em> Has Been Missing</h1>
+        <p class="lead" data-i18n="hero_sub">Interactive dashboards and smart spreadsheets — try any product live before you buy. No account needed.</p>
+        <div class="hero-ctas">
+          <a href="catalog.html"  class="btn btn-primary btn-lg" data-i18n="hero_cta1">Browse the Catalog</a>
+          <a href="freetool.html" class="btn btn-ghost btn-lg"   data-i18n="hero_cta2">Try the Free Tool <span class="arrow">→</span></a>
+        </div>
+        <div class="hero-trust" role="list">
+          <div class="hero-trust-item" role="listitem"><span class="trust-check" aria-hidden="true">✓</span><span data-i18n="hero_trust1">13-week cash visibility</span></div>
+          <div class="hero-trust-item" role="listitem"><span class="trust-check" aria-hidden="true">✓</span><span data-i18n="hero_trust2">Try before you buy</span></div>
+          <div class="hero-trust-item" role="listitem"><span class="trust-check" aria-hidden="true">✓</span><span data-i18n="hero_trust3">Instant access after purchase</span></div>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <div class="hero-float-badge">
+          <div class="hero-float-badge-num" data-i18n="hero_float_num">4 weeks</div>
+          <div class="hero-float-badge-text" data-i18n="hero_float_txt">earlier warning than manual spreadsheets</div>
+        </div>
+        <div class="dashboard-card">
+          <div class="dc-topbar">
+            <span class="dc-dot dc-dot-r"></span><span class="dc-dot dc-dot-y"></span><span class="dc-dot dc-dot-g"></span>
+            <span class="dc-title" data-i18n="dc_title">13-Week Cash Flow Forecast — Demo</span>
+          </div>
+          <div class="dc-body">
+            <div class="week-row" aria-hidden="true">
+              <span class="wk">W1</span><span class="wk">W2</span><span class="wk">W3</span><span class="wk">W4</span><span class="wk">W5</span><span class="wk">W6</span><span class="wk">W7</span><span class="wk">W8</span><span class="wk danger">W9</span><span class="wk">W10</span><span class="wk">W11</span><span class="wk">W12</span><span class="wk">W13</span>
+            </div>
+            <div class="chart-area" aria-hidden="true">
+              <div class="bar-col"><div class="bar-pos" style="height:52%"></div></div>
+              <div class="bar-col"><div class="bar-pos" style="height:68%"></div></div>
+              <div class="bar-col"><div class="bar-pos" style="height:44%"></div></div>
+              <div class="bar-col"><div class="bar-pos" style="height:76%"></div></div>
+              <div class="bar-col"><div class="bar-pos" style="height:38%"></div></div>
+              <div class="bar-col"><div class="bar-pos" style="height:60%"></div></div>
+              <div class="bar-col"><div class="bar-pos" style="height:28%"></div></div>
+              <div class="bar-col is-warn"><div class="bar-pos" style="height:14%"></div></div>
+              <div class="bar-col is-danger"><div class="bar-neg" style="height:30%"></div></div>
+              <div class="bar-col"><div class="bar-neg" style="height:18%"></div></div>
+              <div class="bar-col"><div class="bar-pos" style="height:20%"></div></div>
+              <div class="bar-col"><div class="bar-pos" style="height:40%"></div></div>
+              <div class="bar-col"><div class="bar-pos" style="height:58%"></div></div>
+            </div>
+            <div class="dc-alert">
+              <span class="dc-alert-icon">⚠</span>
+              <div class="dc-alert-body">
+                <div class="dc-alert-title" data-i18n="dc_alert">Week 9: Cash balance goes negative (−$4,200)</div>
+                <div class="dc-alert-sub"   data-i18n="dc_sub">Action needed — 4 weeks remaining to act</div>
+              </div>
+            </div>
+            <div class="dc-summary">
+              <div class="dc-kpi"><div class="dc-kpi-val gain">$18,400</div><div class="dc-kpi-label" data-i18n="dc_kpi1">Current cash</div></div>
+              <div class="dc-kpi"><div class="dc-kpi-val loss">−$4,200</div><div class="dc-kpi-label" data-i18n="dc_kpi2">Week 9 low</div></div>
+              <div class="dc-kpi"><div class="dc-kpi-val">W11</div><div class="dc-kpi-label" data-i18n="dc_kpi3">Recovery week</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+     HOW IT WORKS
+     ====================================================== -->
+<section class="section section-white" id="how-it-works">
+  <div class="container">
+    <div class="section-header center">
+      <span class="eyebrow" data-i18n="hiw_eyebrow">How it works</span>
+      <h2 class="display-lg" data-i18n="hiw_h2">Try it. See it work. Then decide.</h2>
+      <p class="lead" data-i18n="hiw_sub">Every product is interactive before you pay a cent.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-icon-wrap">
+          <div class="step-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--blue-500)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div><div class="step-num">1</div>
+        </div>
+        <h3 class="step-title" data-i18n="hiw_s1_title">Try the live demo</h3>
+        <p class="body-md step-body" data-i18n="hiw_s1_body">Every product has a live, interactive demo you can use right now — no signup, no email required.</p>
+      </div>
+      <div class="step">
+        <div class="step-icon-wrap">
+          <div class="step-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--blue-500)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+          </div><div class="step-num">2</div>
+        </div>
+        <h3 class="step-title" data-i18n="hiw_s2_title">See exactly what you get</h3>
+        <p class="body-md step-body" data-i18n="hiw_s2_body">Watch a short walkthrough video and read what's inside. No guessing what you're buying.</p>
+      </div>
+      <div class="step">
+        <div class="step-icon-wrap">
+          <div class="step-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--blue-500)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div><div class="step-num">3</div>
+        </div>
+        <h3 class="step-title" data-i18n="hiw_s3_title">Buy and get instant access</h3>
+        <p class="body-md step-body" data-i18n="hiw_s3_body">Pay once. Your license key, file link, or dashboard copy arrives in your inbox in under 60 seconds.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+     PRODUCT AS PROOF
+     ====================================================== -->
+<section class="section section-surface" id="proof">
+  <div class="container">
+    <div class="proof-grid">
+      <div class="proof-img-wrap">
+        <div class="proof-img">
+          <div class="proof-screenshot">
+            <div class="proof-ss-header">
+              <span class="proof-ss-title">13-Week Cash Flow Forecast — Sample Output</span>
+              <span class="badge badge-grey">Demo data</span>
+            </div>
+            <div class="proof-week-grid" aria-hidden="true">
+              <div class="pwk"></div><div class="pwk"></div><div class="pwk"></div><div class="pwk"></div>
+              <div class="pwk"></div><div class="pwk"></div><div class="pwk"></div>
+              <div class="pwk amber"></div><div class="pwk danger"></div>
+              <div class="pwk faded"></div><div class="pwk faded"></div><div class="pwk faded"></div><div class="pwk faded"></div>
+            </div>
+            <div class="proof-alert-row" role="alert" data-i18n="dc_alert">Week 9: Cash balance goes negative (−$4,200)</div>
+          </div>
+        </div>
+        <div class="proof-caption">
+          <div class="proof-caption-label" data-i18n="proof_cap_label">Live demo result</div>
+          <p class="proof-caption-text" data-i18n="proof_caption">This is the week the model detected the demo business was about to go cash-negative — 4 weeks before it happened.</p>
+        </div>
+      </div>
+      <div class="proof-text">
+        <span class="eyebrow" data-i18n="proof_eyebrow">See it in action</span>
+        <h2 class="display-md" style="margin-top:var(--s3);margin-bottom:var(--s5);" data-i18n="proof_h2">This is what the product actually does.</h2>
+        <p class="lead" style="margin-bottom:var(--s5);" data-i18n="proof_body1">The 13-Week Cash Flow Forecast flagged Week 9 as critical — when the demo company's cash balance would turn negative. The alert triggered in Week 5, giving the business owner 4 weeks to act.</p>
+        <p class="body-md" style="margin-bottom:var(--s6);" data-i18n="proof_body2">Delay a purchase. Accelerate a collection. Arrange a credit line. Four weeks is enough time — if you know in advance.</p>
+        <div class="proof-disclaimer">
+          <strong data-i18n="proof_disc_title">Demo result — not a customer quote</strong>
+          <span data-i18n="proof_disc_body">Numbers shown are real outputs from the tool on a sample business. We built this to show you what the product does, not to fabricate social proof.</span>
+        </div>
+        <div style="margin-top:var(--s6);">
+          <a href="products/13-week-cash-flow.html" class="btn btn-ghost" data-i18n="proof_cta">Try the demo yourself <span class="arrow">→</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+     FEATURED PRODUCTS
+     ====================================================== -->
+<section class="section section-white" id="products">
+  <div class="container">
+    <div class="section-header center" style="margin-bottom:var(--s10);">
+      <span class="eyebrow" data-i18n="prod_eyebrow">Our tools</span>
+      <h2 class="display-lg" style="margin-top:var(--s3)" data-i18n="prod_h2">Built for businesses that run on spreadsheets and dashboards.</h2>
+    </div>
+    <div class="products-grid">
+      <article class="product-card">
+        <div class="pc-thumb">
+          <div class="pc-thumb-placeholder"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="var(--navy-600)" stroke-width="1.2" style="opacity:.35"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+          <span class="pc-type-badge badge badge-blue" data-i18n="p1_type">Sheet Tool</span>
+        </div>
+        <div class="pc-body">
+          <h3 class="pc-name" data-i18n="p1_name">13-Week Cash Flow Forecast</h3>
+          <p class="pc-benefit" data-i18n="p1_benefit">See your cash in vs. out, week by week, for 13 weeks — and get flagged the exact week you're about to run short.</p>
+          <div class="pc-footer">
+            <div class="pc-price">
+              <div class="pc-price-main price-usd">$<span data-price-id="p1">39</span></div>
+              <div class="pc-price-main price-vnd"><span data-price-id="p1">999,000 ₫</span></div>
+              <div class="pc-price-sub" data-i18n="prod_one_time">one-time</div>
+            </div>
+            <div class="pc-actions">
+              <a href="products/13-week-cash-flow.html#demo" class="btn btn-outline btn-sm" data-i18n="prod_try">Try demo</a>
+              <a href="products/13-week-cash-flow.html#buy"  class="btn btn-blue   btn-sm" data-i18n="prod_buy">Buy</a>
+            </div>
+          </div>
+        </div>
+      </article>
+      <article class="product-card">
+        <div class="pc-thumb">
+          <div class="pc-thumb-placeholder"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="var(--navy-600)" stroke-width="1.2" style="opacity:.35"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+          <span class="pc-type-badge badge badge-navy" data-i18n="p2_type">Dashboard</span>
+        </div>
+        <div class="pc-body">
+          <h3 class="pc-name" data-i18n="p2_name">Monthly P&amp;L Dashboard</h3>
+          <p class="pc-benefit" data-i18n="p2_benefit">One-page view of your revenue, costs, gross margin, and net profit — every month, automatically.</p>
+          <div class="pc-footer">
+            <div class="pc-price">
+              <div class="pc-price-main price-usd">$<span data-price-id="p2">49</span></div>
+              <div class="pc-price-main price-vnd"><span data-price-id="p2">1,249,000 ₫</span></div>
+              <div class="pc-price-sub" data-i18n="prod_one_time">one-time</div>
+            </div>
+            <div class="pc-actions">
+              <a href="catalog.html" class="btn btn-outline btn-sm" data-i18n="prod_try">Try demo</a>
+              <a href="catalog.html" class="btn btn-blue   btn-sm" data-i18n="prod_buy">Buy</a>
+            </div>
+          </div>
+        </div>
+      </article>
+      <article class="product-card">
+        <div class="pc-thumb">
+          <div class="pc-thumb-placeholder"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="var(--navy-600)" stroke-width="1.2" style="opacity:.35"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><line x1="12" y1="6" x2="12" y2="8"/><line x1="12" y1="16" x2="12" y2="18"/></svg></div>
+          <span class="pc-type-badge badge badge-blue" data-i18n="p3_type">Sheet Tool</span>
+        </div>
+        <div class="pc-body">
+          <h3 class="pc-name" data-i18n="p3_name">Expense Tracker &amp; Budget Planner</h3>
+          <p class="pc-benefit" data-i18n="p3_benefit">Log expenses, set monthly budgets by category, and see instantly where you're over or under.</p>
+          <div class="pc-footer">
+            <div class="pc-price">
+              <div class="pc-price-main price-usd">$<span data-price-id="p3">29</span></div>
+              <div class="pc-price-main price-vnd"><span data-price-id="p3">749,000 ₫</span></div>
+              <div class="pc-price-sub" data-i18n="prod_one_time">one-time</div>
+            </div>
+            <div class="pc-actions">
+              <a href="catalog.html" class="btn btn-outline btn-sm" data-i18n="prod_try">Try demo</a>
+              <a href="catalog.html" class="btn btn-blue   btn-sm" data-i18n="prod_buy">Buy</a>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+    <div class="flex-center mt-10">
+      <a href="catalog.html" class="btn btn-ghost" data-i18n="prod_see_all">See all products <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+     FREE TOOL STRIP
+     ====================================================== -->
+<section class="tool-strip" id="free-tool">
+  <div class="container">
+    <div class="tool-strip-grid">
+      <div class="on-dark">
+        <div class="ts-label" data-i18n="ts_label">Free · No signup needed</div>
+        <h2 class="ts-h2" data-i18n="ts_h2">Find your break-even point in 30 seconds.</h2>
+        <p class="ts-body" data-i18n="ts_body">Enter your fixed costs, selling price, and variable cost. Get your break-even units and revenue instantly.</p>
+        <div class="ts-ctas">
+          <a href="freetool.html" class="btn btn-blue btn-lg" data-i18n="ts_cta1">Use the free calculator</a>
+          <a href="freetool.html" class="btn btn-ghost-white"  data-i18n="ts_cta2">Share with your team →</a>
+        </div>
+      </div>
+      <div>
+        <div class="calc-preview" aria-hidden="true">
+          <div class="cp-title" data-i18n="ts_calc_title">Break-Even Calculator</div>
+          <div class="cp-field"><div class="cp-label" data-i18n="ts_calc_f1">Fixed costs / month</div><div class="cp-input-row"><span class="cp-prefix">$</span><span class="cp-value">12,500</span></div></div>
+          <div class="cp-field"><div class="cp-label" data-i18n="ts_calc_f2">Selling price / unit</div><div class="cp-input-row"><span class="cp-prefix">$</span><span class="cp-value">80</span></div></div>
+          <div class="cp-field"><div class="cp-label" data-i18n="ts_calc_f3">Variable cost / unit</div><div class="cp-input-row"><span class="cp-prefix">$</span><span class="cp-value">40</span></div></div>
+          <div class="cp-results">
+            <div class="cp-result"><div class="cp-result-val" id="cp-r1">313 units</div><div class="cp-result-lbl" data-i18n="ts_calc_r1">Break-even units</div></div>
+            <div class="cp-result"><div class="cp-result-val" id="cp-r2">$25,040</div><div class="cp-result-lbl" data-i18n="ts_calc_r2">Break-even revenue</div></div>
+          </div>
+          <a href="freetool.html" class="cp-cta-link" data-i18n="ts_calc_link">Try the full version →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+     FINAL CTA
+     ====================================================== -->
+<section class="cta-band">
+  <div class="container">
+    <div class="cta-band-inner">
+      <h2 class="display-lg" data-i18n="cta_h2">Ready to see your numbers clearly?</h2>
+      <p class="lead mt-4" data-i18n="cta_body">Try any product live. Pay only if it works for you. Instant access after purchase.</p>
+      <div class="cta-band-actions mt-8">
+        <a href="catalog.html"  class="btn btn-primary btn-lg" data-i18n="cta_btn1">Browse the Catalog</a>
+        <a href="freetool.html" class="btn btn-outline btn-lg" data-i18n="cta_btn2">Try the Free Tool</a>
+      </div>
+      <p class="cta-guarantee"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span data-i18n="cta_guar">14-day money-back guarantee — no questions asked</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+     FOOTER — WordPress: footer.php
+     ====================================================== -->
+<footer class="site-footer" id="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-logo">LUXORA</div>
+        <p class="footer-tagline" data-i18n="footer_tagline">Finance dashboards and smart spreadsheets for SMEs. Try before you buy.</p>
+        <p class="footer-contact"><span data-i18n="footer_contact">Support: </span><a href="mailto:luxora@luxorasystem.com">luxora@luxorasystem.com</a></p>
+      </div>
+      <div>
+        <div class="footer-col-title" data-i18n="footer_col1">Products</div>
+        <ul class="footer-links" role="list">
+          <li><a href="products/13-week-cash-flow.html" class="footer-link" data-i18n="footer_p1">13-Week Cash Flow Forecast</a></li>
+          <li><a href="catalog.html" class="footer-link" data-i18n="footer_p2">Monthly P&amp;L Dashboard</a></li>
+          <li><a href="catalog.html" class="footer-link" data-i18n="footer_p3">Expense Tracker</a></li>
+          <li><a href="catalog.html" class="footer-link" data-i18n="footer_p4">Business Finance OS</a></li>
+          <li><a href="catalog.html" class="footer-link" data-i18n="footer_p5">See all products →</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title" data-i18n="footer_col2">Free Tools</div>
+        <ul class="footer-links" role="list">
+          <li><a href="freetool.html" class="footer-link" data-i18n="footer_t1">Break-Even Calculator</a></li>
+        </ul>
+        <div class="footer-col-title" style="margin-top:var(--s8);" data-i18n="footer_col3">Help</div>
+        <ul class="footer-links" role="list">
+          <li><a href="home.html#how-it-works" class="footer-link" data-i18n="footer_h1">How It Works</a></li>
+          <li><a href="account.html"           class="footer-link" data-i18n="footer_h2">My Products</a></li>
+          <li><a href="contact.html"           class="footer-link" data-i18n="footer_h3">Support</a></li>
+          <li><a href="#"                      class="footer-link" data-i18n="footer_h4">Refund Policy</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Language</div>
+        <div class="toggle-group" role="group" style="margin-bottom:var(--s5);">
+          <button class="toggle-btn toggle-lang active" data-value="en" onclick="setLang('en')">EN</button>
+          <button class="toggle-btn toggle-lang"        data-value="vi" onclick="setLang('vi')">VI</button>
+        </div>
+        <div class="footer-col-title">Currency</div>
+        <div class="toggle-group" role="group">
+          <button class="toggle-btn toggle-cur active" data-value="usd" onclick="setCurrency('usd')">USD</button>
+          <button class="toggle-btn toggle-cur"        data-value="vnd" onclick="setCurrency('vnd')">VND</button>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy" data-i18n="footer_copy">© 2025 Luxora. All rights reserved.</p>
+      <nav class="footer-legal"><a href="#" data-i18n="footer_privacy">Privacy</a><a href="#" data-i18n="footer_terms">Terms</a><a href="#" data-i18n="footer_refund">Refund Policy</a></nav>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

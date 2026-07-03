@@ -1,0 +1,24 @@
+# Secrets — never commit
+deploy/.env
+deploy/.env.*
+!deploy/.env.example
+manage/.env
+manage/.env.*
+
+# Private SSH keys
+deploy/hostinger_key
+deploy/hostinger_key_delia
+
+# Contains hardcoded WP application password
+manage/_test_auth.py
+
+# Editor / OS
+.vscode/
+Thumbs.db
+Desktop.ini
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/

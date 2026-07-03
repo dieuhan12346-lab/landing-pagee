@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sản Phẩm — Delia Chocolate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="delia-theme/assets/css/main.css">
+</head>
+<body>
+
+<nav class="delia-nav">
+    <a href="delia-home.html" class="nav-logo">DELIA</a>
+    <ul class="nav-links">
+        <li><a href="delia-home.html">Trang Chủ</a></li>
+        <li><a href="delia-shop.html" class="nav-active">Sản Phẩm</a></li>
+        <li><a href="delia-story.html">Câu Chuyện</a></li>
+        <li><a href="delia-about.html">Về Delia</a></li>
+        <li><a href="delia-contact.html">Liên Hệ</a></li>
+    </ul>
+    <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="inner-hero">
+    <div class="inner-hero-content">
+        <div class="breadcrumb">
+            <a href="delia-home.html">Trang Chủ</a>
+            <span>/</span>
+            <span>Sản Phẩm</span>
+        </div>
+        <p class="section-eyebrow">Bộ Sưu Tập</p>
+        <h1>Socola Thủ Công<br><em>Cho Mọi Khoảnh Khắc</em></h1>
+        <p>Mỗi sản phẩm là một câu chuyện — từ hạt cacao đến hộp quà, đều được tạo ra với tình yêu và sự tỉ mỉ tuyệt đối.</p>
+    </div>
+</section>
+
+<!-- SHOP -->
+<section class="shop-section">
+    <div style="max-width:1200px;margin:0 auto;">
+        <div class="shop-toolbar">
+            <div class="filter-pills">
+                <button class="pill active" onclick="filterProducts('all', this)">Tất Cả</button>
+                <button class="pill" onclick="filterProducts('dark', this)">Socola Đen</button>
+                <button class="pill" onclick="filterProducts('milk', this)">Socola Sữa</button>
+                <button class="pill" onclick="filterProducts('gift', this)">Quà Tặng</button>
+                <button class="pill" onclick="filterProducts('seasonal', this)">Theo Mùa</button>
+            </div>
+            <span class="shop-count" id="shopCount">8 sản phẩm</span>
+        </div>
+
+        <div class="shop-grid" id="shopGrid">
+            <!-- DARK -->
+            <div class="product-card" data-cat="dark">
+                <div class="product-img product-img-1">
+                    <div class="product-overlay"><a href="delia-contact.html" class="product-cta">Đặt Hàng</a></div>
+                </div>
+                <div class="product-info">
+                    <span class="product-tag">Bestseller</span>
+                    <h3>Dark Truffle Collection</h3>
+                    <p>Socola đen 72% cacao nguyên chất, nhân ganache vanilla Madagascar</p>
+                    <span class="product-price">từ 350.000đ / hộp 12 viên</span>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="dark">
+                <div class="product-img" style="background:linear-gradient(135deg,#1a0800 0%,#4a2200 40%,#2d1000 100%);">
+                    <div class="product-overlay"><a href="delia-contact.html" class="product-cta">Đặt Hàng</a></div>
+                </div>
+                <div class="product-info">
+                    <span class="product-tag">Cao Cấp</span>
+                    <h3>Dark Single Origin 85%</h3>
+                    <p>Socola đen 85% từ một nguồn cacao duy nhất tại Bến Tre — hương vị thuần khiết, sâu lắng</p>
+                    <span class="product-price">từ 420.000đ / hộp 10 viên</span>
+                </div>
+            </div>
+
+            <!-- MILK -->
+            <div class="product-card" data-cat="milk">
+                <div class="product-img product-img-4">
+                    <div class="product-overlay"><a href="delia-contact.html" class="product-cta">Đặt Hàng</a></div>
+                </div>
+                <div class="product-info">
+                    <span class="product-tag">Trẻ Em Yêu Thích</span>
+                    <h3>Milk & Caramel</h3>
+                    <p>Socola sữa mềm nhân caramel muối biển — ngọt ngào tinh tế</p>
+                    <span class="product-price">từ 280.000đ / hộp 12 viên</span>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="milk">
+                <div class="product-img" style="background:linear-gradient(135deg,#F5E6DE 0%,#D4956A 50%,#E8C08A 100%);">
+                    <div class="product-overlay"><a href="delia-contact.html" class="product-cta">Đặt Hàng</a></div>
+                </div>
+                <div class="product-info">
+                    <span class="product-tag">Mới</span>
+                    <h3>White Raspberry Bliss</h3>
+                    <p>Socola trắng nhân mứt mâm xôi tươi — sự kết hợp ngọt ngào và thanh mát đặc biệt</p>
+                    <span class="product-price">từ 310.000đ / hộp 12 viên</span>
+                </div>
+            </div>
+
+            <!-- GIFT -->
+            <div class="product-card product-card--featured" data-cat="gift">
+                <div class="product-img product-img-2">
+                    <div class="product-overlay"><a href="delia-contact.html" class="product-cta">Đặt Hàng</a></div>
+                </div>
+                <div class="product-info">
+                    <span class="product-tag product-tag--gold">Quà Tặng</span>
+                    <h3>Gift Box Cao Cấp</h3>
+                    <p>Hộp quà sang trọng — tuyển chọn 24 viên socola thủ công đa vị</p>
+                    <span class="product-price">từ 680.000đ / hộp 24 viên</span>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="gift">
+                <div class="product-img" style="background:linear-gradient(135deg,#E8D5C0 0%,#C4956A 30%,#D4704F 70%,#E8C08A 100%);">
+                    <div class="product-overlay"><a href="delia-contact.html" class="product-cta">Đặt Hàng</a></div>
+                </div>
+                <div class="product-info">
+                    <span class="product-tag product-tag--gold">Quà Tặng</span>
+                    <h3>Corporate Gift Set</h3>
+                    <p>Hộp quà doanh nghiệp 48 viên, có thể in logo thương hiệu theo yêu cầu</p>
+                    <span class="product-price">từ 1.200.000đ / hộp 48 viên</span>
+                </div>
+            </div>
+
+            <!-- SEASONAL -->
+            <div class="product-card" data-cat="seasonal">
+                <div class="product-img product-img-3">
+                    <div class="product-overlay"><a href="delia-contact.html" class="product-cta">Đặt Hàng</a></div>
+                </div>
+                <div class="product-info">
+                    <span class="product-tag">Mới Nhất</span>
+                    <h3>Seasonal Praline</h3>
+                    <p>Praline hạnh nhân & hạt dẻ rang — hương vị giới hạn theo mùa</p>
+                    <span class="product-price">từ 420.000đ / hộp 16 viên</span>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="seasonal">
+                <div class="product-img" style="background:linear-gradient(135deg,#C4704F 0%,#E8C08A 40%,#D4956A 100%);">
+                    <div class="product-overlay"><a href="delia-contact.html" class="product-cta">Đặt Hàng</a></div>
+                </div>
+                <div class="product-info">
+                    <span class="product-tag">Giới Hạn</span>
+                    <h3>Summer Mango Bonbon</h3>
+                    <p>Bonbon xoài Cát Hoà Lộc tươi, phủ socola đen 65% — đặc sản mùa hè</p>
+                    <span class="product-price">từ 390.000đ / hộp 14 viên</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ORDER CTA -->
+<section style="background:var(--terra-pale);padding:5rem 4rem;text-align:center;border-top:1px solid var(--border);">
+    <p class="section-eyebrow" style="margin-bottom:1rem;">Đặt Hàng Theo Yêu Cầu</p>
+    <h2 style="font-family:var(--font-serif);font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;color:var(--brown);margin-bottom:1rem;line-height:1.2;">Muốn Thiết Kế Hộp Quà<br><em style="font-style:italic;font-weight:400;color:var(--terra);">Theo Ý Riêng?</em></h2>
+    <p style="font-size:0.95rem;color:var(--text-muted);margin-bottom:2rem;">Chúng tôi nhận đặt theo yêu cầu — từ nhân socola, hộp đựng đến in logo doanh nghiệp.</p>
+    <a href="delia-contact.html" class="btn-primary">Liên Hệ Tư Vấn</a>
+</section>
+
+<footer class="delia-footer">
+    <div class="footer-inner">
+        <div class="footer-brand">
+            <span class="footer-logo">DELIA</span>
+            <p>Nghệ thuật socola thủ công<br>từ những nguyên liệu tinh tuyển nhất.</p>
+        </div>
+        <div class="footer-links">
+            <a href="delia-shop.html">Sản Phẩm</a>
+            <a href="delia-story.html">Câu Chuyện</a>
+            <a href="delia-about.html">Về Delia</a>
+            <a href="delia-contact.html">Liên Hệ</a>
+        </div>
+        <div class="footer-social">
+            <a href="#" aria-label="Facebook">FB</a>
+            <a href="#" aria-label="Instagram">IG</a>
+        </div>
+    </div>
+    <div class="footer-copy">
+        <p>&copy; 2026 Delia Chocolate. Tất cả quyền được bảo lưu.</p>
+    </div>
+</footer>
+
+<script src="delia-theme/assets/js/main.js"></script>
+<script>
+function filterProducts(cat, btn) {
+    document.querySelectorAll('.pill').forEach(function(p) { p.classList.remove('active'); });
+    btn.classList.add('active');
+    var cards = document.querySelectorAll('#shopGrid .product-card');
+    var visible = 0;
+    cards.forEach(function(card) {
+        if (cat === 'all' || card.dataset.cat === cat) {
+            card.style.display = '';
+            visible++;
+        } else {
+            card.style.display = 'none';
+        }
+    });
+    document.getElementById('shopCount').textContent = visible + ' sản phẩm';
+}
+</script>
+</body>
+</html>
