@@ -1,0 +1,15 @@
+/*
+Theme Name: Luxora
+Theme URI: https://luxorasystem.com
+Author: Luxora
+Author URI: https://luxorasystem.com
+Description: Luxora — FP&A and operating automation marketing site. Editorial "paper" design, bilingual VI/EN, single-page navigation. No WooCommerce.
+Version: 1.0.0
+Requires at least: 6.2
+Requires PHP: 8.0
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: loxora
+*/
+
+/* Actual styles live in assets/css/loxora.css (enqueued in functions.php). */

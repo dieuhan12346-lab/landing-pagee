@@ -9,7 +9,7 @@ from pathlib import Path
 
 SCRIPT_DIR  = Path(__file__).parent
 PROJECT_DIR = SCRIPT_DIR.parent
-LOCAL_THEME = PROJECT_DIR / 'luxora-theme'
+LOCAL_THEME = PROJECT_DIR / 'loxora-theme'  # session redesign; uploads into remote luxora-theme folder
 KEY_FILE    = SCRIPT_DIR / 'hostinger_key'
 ENV_FILE    = SCRIPT_DIR / '.env'
 

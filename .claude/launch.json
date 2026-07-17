@@ -6,6 +6,27 @@
       "runtimeExecutable": "npx",
       "runtimeArgs": ["serve", "-l", "3456", "."],
       "port": 3456
+    },
+    {
+      "name": "dongtien-preview",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--prefix", "E:/Work/dongtien-preview", "--", "--port", "7788", "--strictPort"],
+      "port": 7788,
+      "autoPort": false
+    },
+    {
+      "name": "dongtien-build",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["vite", "preview", "--outDir", "E:/Work/dongtien-preview/dist", "--port", "7799", "--strictPort"],
+      "port": 7799,
+      "autoPort": false
+    },
+    {
+      "name": "dongtien-demo",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["vite", "preview", "--outDir", "E:/Work/dongtien-preview/dist-demo", "--port", "7801", "--strictPort"],
+      "port": 7801,
+      "autoPort": false
     }
   ]
 }
